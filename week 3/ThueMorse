@@ -1,0 +1,31 @@
+public class ThueMorse {
+    public static void main(String[] args) {
+        int n = Integer.parseInt(args[0]);
+        double i = 0;
+        while ((int) Math.pow(2, i) < n)
+            i += 1;
+
+        boolean[] seq = new boolean[(int) Math.pow(2, i)];
+        seq[0] = false;
+        for (int iter = 0; iter < i; iter++) {
+
+            for (int j = 0; j < (int) Math.pow(2, iter); j++) {
+                seq[j + (int) Math.pow(2, iter)] = !seq[j];
+            }
+        }
+
+        for (int row = 0; row < n; row++) {
+            for (int col = 0; col < n; col++) {
+                if (seq[row] == seq[col]) {
+                    System.out.print("+" + "  ");
+                }
+                else {
+                    System.out.print("-" + "  ");
+                }
+            }
+            System.out.println("");
+
+        }
+
+    }
+}
