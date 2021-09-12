@@ -1,0 +1,22 @@
+public class BandMatrix {
+    public static void main(String[] args) {
+        Integer n = Integer.parseInt(args[0]);
+        Integer width = Integer.parseInt(args[1]);
+        for (int row = 1; row <= n; row++) {
+            for (int col = 1; col <= n; col++) {
+                if (row == col) {
+                    System.out.print("*  ");
+                }
+                else {
+                    if (Math.abs(row - col) - 1 < width) {
+                        System.out.print("*  ");
+                    }
+                    else {
+                        System.out.print("0  ");
+                    }
+                }
+            }
+            System.out.println("");
+        }
+    }
+}
