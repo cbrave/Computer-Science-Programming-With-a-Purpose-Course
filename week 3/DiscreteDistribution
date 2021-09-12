@@ -1,0 +1,30 @@
+public class DiscreteDistribution {
+    public static void main(String[] args) {
+        int m = Integer.parseInt(args[0]);
+        int len = args.length - 1;
+        int[] prob = new int[len];
+        int[] sums = new int[len + 1];
+        int[] dist = new int[m];
+        for (int i = 0; i < len; i++) {
+            prob[i] = Integer.parseInt(args[i + 1]);
+        }
+        sums[0] = 0;
+        sums[1] = prob[0];
+        for (int i = 1; i < len; i++) {
+            sums[i + 1] = sums[i] + prob[i];
+        }
+        for (int i = 0; i < m; i++) {
+            double r = Math.random() * sums[len];
+            if (r < sums[1])
+                dist[i] = 1;
+            else {
+                for (int j = 2; j < len + 1; j++) {
+                    if (r < sums[j] && r > sums[j - 1])
+                        dist[i] = j;
+                }
+            }
+        }
+        for (int i = 0; i < m; i++)
+            System.out.print(dist[i] + " ");
+    }
+}
