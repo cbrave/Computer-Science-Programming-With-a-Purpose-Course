@@ -1,0 +1,13 @@
+public class RightTriangle {
+    public static void main(String[] args) {
+        Integer n1 = Integer.parseInt(args[0]);
+        Integer n2 = Integer.parseInt(args[1]);
+        Integer n3 = Integer.parseInt(args[2]);
+
+        Boolean bool = (n1 > 0 && n2 > 0 && n3 > 0);
+        bool = (bool && (n1 * n1 + n2 * n2 == n3 * n3 || n2 * n2 + n3 * n3 == n1 * n1
+                || n3 * n3 + n1 * n1 == n2 * n2));
+
+        System.out.print(bool);
+    }
+}
