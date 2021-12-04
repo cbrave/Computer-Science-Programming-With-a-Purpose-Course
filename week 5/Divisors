@@ -1,0 +1,45 @@
+/* *****************************************************************************
+ *  Name:              Ada Lovelace
+ *  Coursera User ID:  123456
+ *  Last modified:     October 16, 1842
+ **************************************************************************** */
+
+public class Divisors {
+
+    public static int gcd(int a, int b) {
+        a = Math.abs(a);
+        b = Math.abs(b);
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    public static int lcm(int a, int b) {
+        if (a == 0 || b == 0)
+            return 0;
+        else
+            return Math.abs(a) / gcd(a, b) * Math.abs(b);
+    }
+
+    public static boolean areRelativelyPrime(int a, int b) {
+        return (gcd(a, b) == 1);
+    }
+
+    public static int totient(int n) {
+        if (n <= 0)
+            return 0;
+        int count = 0;
+        for (int i = 1; i <= n; i++) {
+            if (areRelativelyPrime(n, i)) count++;
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(lcm(0, 0));
+    }
+}
+
